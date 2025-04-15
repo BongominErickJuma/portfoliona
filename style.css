@@ -68,7 +68,7 @@ body {
   font-family: "Fira Code", monospace;
 }
 .hero-title {
-  font-size: 60px;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   width: fit-content;
   color: #ccd6f6;
   margin: 0;
@@ -390,4 +390,8 @@ section {
   .nav-links li {
     margin: 10px 0;
   }
+}
+
+.accent {
+  color: #8892b0;
 }
