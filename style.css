@@ -1,25 +1,40 @@
-/* Import fonts */
+/* ===============================
+   THEME CONFIGURATION
+   =============================== */
+
+:root {
+  --color-bg-start: #0d1b2a;
+  --color-bg-end: #1b263b;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #cbd5e1;
+  --color-accent: #38bdf8;
+  --color-accent-light: #7dd3fc;
+  --color-card-bg: rgba(15, 23, 42, 0.8);
+  --color-border: #334155;
+  --color-btn-bg: #38bdf8;
+  --color-btn-text: #ffffff;
+  --font-primary: "Inter", sans-serif;
+  --font-mono: "Fira Code", monospace;
+}
+
+/* ===============================
+     GLOBAL STYLES
+     =============================== */
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-  background-color: #0a192f;
-  color: #ccd6f6;
+  font-family: var(--font-primary);
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-start),
+    var(--color-bg-end)
+  );
+  color: var(--color-text-primary);
   line-height: 1.6;
 }
 
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Container */
+/* ===============================
+     CONTAINER
+     =============================== */
 .container {
   width: 90%;
   max-width: 1000px;
@@ -27,143 +42,204 @@ body {
   padding: 40px 0;
 }
 
-/* Navbar */
+/* ===============================
+     NAVBAR
+     =============================== */
 .navbar {
-  background-color: #0a192f;
+  background: rgba(13, 27, 42, 0.9);
+  backdrop-filter: blur(10px);
   padding: 20px 0;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(13, 27, 42, 0.98);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 .navbar .logo {
-  color: #64ffda;
-  font-family: "Fira Code", monospace;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
   font-size: 24px;
 }
+
 .nav-links {
   list-style: none;
   display: flex;
   gap: 30px;
   justify-content: flex-end;
 }
+
 .nav-links a {
-  color: #8892b0;
+  color: var(--color-text-secondary);
   text-decoration: none;
-  font-family: "Fira Code", monospace;
+  font-family: var(--font-mono);
   transition: color 0.3s;
 }
+
 .nav-links a:hover {
-  color: #64ffda;
+  color: var(--color-accent);
 }
 
-/* Hero Section */
+/* ===============================
+     HERO SECTION
+     =============================== */
 .hero {
   display: flex;
   flex-direction: column;
   justify-content: start;
   min-height: 50vh;
 }
+
 .greeting {
-  color: #64ffda;
-  font-family: "Fira Code", monospace;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
 }
+
 .hero-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   width: fit-content;
-  color: #ccd6f6;
   margin: 0;
-  background: linear-gradient(300deg, #0a192f, #ccd6f6, #64ffda);
+  background: linear-gradient(
+    300deg,
+    var(--color-bg-start),
+    var(--color-accent-light),
+    var(--color-accent)
+  );
   background-size: 180% 180%;
   animation: gradient-animation 18s ease infinite;
   background-clip: text;
   color: transparent;
 }
+
+/* Hero Subtitle - Mobile Friendly Typewriter */
 .hero-subtitle {
-  font-size: 50px;
-  color: #8892b0;
+  color: var(--color-text-secondary);
   margin: 10px 0;
+  font-size: clamp(1.25rem, 5vw, 2.5rem);
+  min-height: 1.2em; /* Prevents layout shift */
+  display: flex;
+  align-items: center;
 }
+
+.typewriter-text {
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 3px;
+  animation: blink-caret 0.75s step-end infinite;
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 .hero-desc {
   max-width: 600px;
-  color: #8892b0;
+  color: var(--color-text-secondary);
 }
+
 .btn {
   display: inline-block;
   margin-top: 30px;
   padding: 12px 24px;
-  color: #64ffda;
-  border: 1px solid #64ffda;
+  background-color: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  font-family: var(--font-mono);
   text-decoration: none;
-  font-family: "Fira Code", monospace;
-  background: none;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
   text-align: center;
 }
 
 .btn:hover {
-  background-color: rgba(100, 255, 218, 0.1);
+  background-color: var(--color-accent-light);
 }
 
-button.btn {
-  width: auto; /* override default button block behavior */
-}
-
-/* Sections */
+/* ===============================
+     SECTION
+     =============================== */
 section {
   padding: 20px 0;
 }
+
 .section-heading {
-  color: #ccd6f6;
+  color: var(--color-text-primary);
   font-size: 32px;
   margin-bottom: 30px;
   position: relative;
 }
+
 .section-heading::before {
   content: "";
   display: block;
   width: 40px;
   height: 1px;
-  background: #64ffda;
+  background: var(--color-accent);
   margin-bottom: 10px;
 }
 
-/* About */
+/* ===============================
+     ABOUT SECTION
+     =============================== */
 .about-content {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
 }
+
 .about-img {
   max-width: 200px;
-  border-radius: 6px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
 .tech-list {
   list-style: none;
   columns: 2;
   padding: 0;
 }
+
 .tech-list li {
-  font-family: "Fira Code", monospace;
-  color: #8892b0;
+  font-family: var(--font-mono);
+  color: var(--color-text-secondary);
   margin-bottom: 5px;
 }
 
-/* Experience */
+/* ===============================
+     EXPERIENCE
+     =============================== */
 .experience .job h3 span {
-  color: #64ffda;
+  color: var(--color-accent);
 }
+
 .experience .job .date {
-  font-family: "Fira Code", monospace;
-  color: #8892b0;
+  font-family: var(--font-mono);
+  color: var(--color-text-secondary);
   margin-bottom: 10px;
 }
+
 .experience ul {
   padding-left: 20px;
 }
 
-/* projects */
-
+/* ===============================
+     PROJECTS
+     =============================== */
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -175,13 +251,14 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   padding: 1.5rem;
-  border: 1px solid #233554;
-  border-radius: 8px;
-  background-color: #112240;
+  border-radius: 12px;
+  background-color: var(--color-card-bg);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease;
-  min-height: 280px; /* Optional: keeps cards uniform */
+  min-height: 280px;
 }
 
 .project:hover {
@@ -189,7 +266,7 @@ section {
 }
 
 .project h3 {
-  color: #ccd6f6;
+  color: var(--color-text-primary);
   font-size: 1.2rem;
   margin: 0 0 0.5rem;
 }
@@ -197,11 +274,11 @@ section {
 .tech {
   font-weight: normal;
   font-size: 0.95rem;
-  color: #64ffda;
+  color: var(--color-accent);
 }
 
 .project .desc {
-  color: #8892b0;
+  color: var(--color-text-secondary);
   margin: 0.5rem 0;
   font-size: 0.95rem;
   flex-grow: 1;
@@ -214,16 +291,9 @@ section {
   flex-wrap: wrap;
 }
 
-.project-links {
-  margin-top: auto;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
 .project a {
-  font-family: "Fira Code", monospace;
-  color: #64ffda;
+  font-family: var(--font-mono);
+  color: var(--color-accent);
   text-decoration: none;
   font-size: 0.9rem;
   display: flex;
@@ -239,21 +309,9 @@ section {
   font-size: 0.95rem;
 }
 
-/* Responsive Grid */
-@media (min-width: 600px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 900px) {
-  .projects-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* contacts */
-
+/* ===============================
+     CONTACT FORM
+     =============================== */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -264,24 +322,23 @@ section {
 .contact-form input,
 .contact-form textarea {
   padding: 0.75rem 1rem;
-  border: 1px solid #233554;
-  border-radius: 6px;
-  background-color: #0a192f;
-  color: #ccd6f6;
-  font-family: "Fira Code", monospace;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: #0f172a;
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
   font-size: 1rem;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border: 1px solid #64ffda;
-  box-shadow: none;
+  border: 1px solid var(--color-accent);
   outline: none;
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: #8892b0;
+  color: var(--color-text-secondary);
 }
 
 .alt-contact {
@@ -292,8 +349,8 @@ section {
 }
 
 .alt-contact a {
-  color: #64ffda;
-  font-family: "Fira Code", monospace;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
   text-decoration: none;
   font-size: 0.95rem;
   display: flex;
@@ -305,16 +362,20 @@ section {
   text-decoration: underline;
 }
 
-/* Footer */
+/* ===============================
+     FOOTER
+     =============================== */
 .footer {
   text-align: center;
   padding: 40px 0;
-  font-family: "Fira Code", monospace;
-  color: #8892b0;
+  font-family: var(--font-mono);
+  color: var(--color-text-secondary);
   font-size: 14px;
 }
 
-/* Responsive */
+/* ===============================
+     RESPONSIVE
+     =============================== */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 40px;
@@ -331,8 +392,22 @@ section {
   }
 }
 
-/* Add to existing CSS */
+/* Responsive Grid */
+@media (min-width: 600px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
+@media (min-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===============================
+     HAMBURGER MENU
+     =============================== */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -344,11 +419,10 @@ section {
 .menu-toggle span {
   width: 25px;
   height: 3px;
-  background: #64ffda;
+  background: var(--color-accent);
   transition: all 0.3s ease;
 }
 
-/* When menu is open, transform hamburger to X */
 .menu-toggle.open span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -361,7 +435,6 @@ section {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Responsive nav */
 @media (max-width: 768px) {
   .navbar {
     padding: 20px;
@@ -375,11 +448,10 @@ section {
     position: absolute;
     top: 70px;
     right: 20px;
-    background: #0a192f;
+    background: var(--color-bg-start);
     flex-direction: column;
     align-items: flex-end;
     padding: 20px;
-    /* border: 1px solid #64ffda; */
     display: none;
   }
 
@@ -393,5 +465,17 @@ section {
 }
 
 .accent {
-  color: #8892b0;
+  color: var(--color-text-secondary);
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
