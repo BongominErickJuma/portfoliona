@@ -263,6 +263,8 @@ section {
 
 .project:hover {
   transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(56, 189, 248, 0.2);
+  border: 1px solid var(--color-accent);
 }
 
 .project h3 {
