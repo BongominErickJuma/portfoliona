@@ -13,8 +13,8 @@
   --color-border: #334155;
   --color-btn-bg: #38bdf8;
   --color-btn-text: #ffffff;
-  --font-primary: "Inter", sans-serif;
-  --font-mono: "Fira Code", monospace;
+  --font-primary: "Asap", sans-serif;
+  --font-mono: "Source Code Pro", monospace;
 }
 
 /* ===============================
@@ -23,11 +23,7 @@
 body {
   margin: 0;
   font-family: var(--font-primary);
-  background: linear-gradient(
-    135deg,
-    var(--color-bg-start),
-    var(--color-bg-end)
-  );
+  background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
   color: var(--color-text-primary);
   line-height: 1.6;
 }
@@ -102,12 +98,7 @@ body {
   font-size: clamp(2.5rem, 5vw, 4rem);
   width: fit-content;
   margin: 0;
-  background: linear-gradient(
-    300deg,
-    var(--color-bg-start),
-    var(--color-accent-light),
-    var(--color-accent)
-  );
+  background: linear-gradient(300deg, var(--color-bg-start), var(--color-accent-light), var(--color-accent));
   background-size: 180% 180%;
   animation: gradient-animation 18s ease infinite;
   background-clip: text;
