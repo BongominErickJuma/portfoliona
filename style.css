@@ -90,7 +90,7 @@ body {
 
 @media (max-width: 768px) {
   .container {
-    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
     padding: 20px;
   }
@@ -151,12 +151,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 100vh;
   padding: 2rem 0;
-  border-radius: 0 0 10% 30%;
+  border-radius: 0 0 0 50%;
   border-bottom: 5px solid var(--color-accent);
-  position: relative;
-  overflow: hidden;
 }
 
 .hero::before {
@@ -195,11 +192,13 @@ body {
   border-radius: 10px;
   max-height: 400px;
   object-fit: cover;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   box-shadow: 0 10px 30px -15px var(--color-accent);
   transition: transform 0.3s ease;
+  display: block;
 }
 
+/* Hover effect */
 .hero-image img:hover {
   transform: scale(1.05);
 }
@@ -234,31 +233,36 @@ body {
 @media (max-width: 768px) {
   .hero {
     border-radius: 0;
+    justify-content: flex-start;
   }
   .hero-container {
     flex-direction: column;
-    text-align: center;
   }
 
   .hero-content {
     order: 2;
-    max-width: 100%;
+    width: 100%;
   }
 
   .hero-image {
     order: 1;
     margin-bottom: 2rem;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .hero-image img {
+    max-height: 280px;
+    max-width: 100%;
   }
 
   .hero-title,
   .hero-subtitle {
     width: 100%;
-    justify-content: center;
+    padding: 0;
   }
 
   .hero-subtitle {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
