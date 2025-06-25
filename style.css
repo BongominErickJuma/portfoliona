@@ -15,6 +15,7 @@
   --color-btn-text: #ffffff;
   --font-primary: "Asap", sans-serif;
   --font-mono: "Source Code Pro", monospace;
+  --section-rotate: 9vw;
 }
 
 /* ===============================
@@ -346,13 +347,6 @@ section {
      ABOUT SECTION
      =============================== */
 
-/* .about {
-  background-image: url("images/bg.png");
-  background-size: cover;
-  border-top: 5px solid var(--color-accent);
-  border-radius: 50% 0 0 0;
-} */
-
 .about-content {
   display: flex;
   flex-wrap: wrap;
@@ -392,50 +386,50 @@ section {
 }
 
 /* ===============================
-     EXPERIENCE
-     =============================== */
-.experience .job h3 span {
-  color: var(--color-accent);
-}
-
-.experience .job .date {
-  font-family: var(--font-mono);
-  color: var(--color-text-secondary);
-  margin-bottom: 10px;
-}
-
-.experience ul {
-  padding-left: 20px;
-}
-
-/* ===============================
      PROJECTS
      =============================== */
+.disabled-link {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: line-through;
+}
+
+.projects-section {
+  margin-top: calc(0px - var(--section-rotate));
+  padding: var(--section-rotate) 0;
+
+  position: relative;
+  background: linear-gradient(135deg, rgba(211, 217, 222, 0.9) 0%, rgba(228, 228, 229, 0.5) 100%);
+  clip-path: polygon(0 var(--section-rotate), 100% 0, 100% calc(100% - var(--section-rotate)), 0 100%);
+}
 .projects-grid {
+  padding: 5rem 0;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-column-gap: 6rem;
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
 }
 
 .project {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1.5rem;
-  border-radius: 12px;
+  width: 20rem;
+  padding: 4rem;
   background-color: var(--color-card-bg);
   backdrop-filter: blur(6px);
-  border: 1px solid var(--color-border);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  min-height: 280px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px -15px var(--color-accent);
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .project:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translateY(-5px) scale(1);
   box-shadow: 0 14px 28px rgba(56, 189, 248, 0.1), 0 10px 10px rgba(56, 189, 248, 0.05);
-  border: 1px solid var(--color-accent);
 }
 
 .project h3 {

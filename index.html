@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Preload fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
       rel="stylesheet"
@@ -16,7 +17,7 @@
   <body>
     <header class="navbar">
       <div class="container nav-container" style="display: flex; justify-content: space-between; align-items: center">
-        <h1 class="logo">BE.</h1>
+        <h1 class="logo">BongominErick.</h1>
 
         <!-- Wrap menu-toggle and nav together -->
         <div style="display: flex; align-items: center; gap: 20px">
@@ -29,7 +30,7 @@
           <nav>
             <ul class="nav-links" id="nav-links">
               <li><a href="#about">About</a></li>
-              <li><a href="#projects">Projects</a></li>
+              <li><a href="#projects">My Work</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </nav>
@@ -58,7 +59,6 @@
       <div class="container">
         <h2 class="section-heading"><span class="accent">01.</span> About Me</h2>
         <div class="about-content">
-          <!-- <img src="profile-pic.jpg" loading="lazy" alt="Bongomin Erick" class="about-img" /> -->
           <div>
             <p>
               I'm a full-stack developer with practical experience in both
@@ -83,15 +83,109 @@
       </div>
     </section>
 
-    <section id="waiting-list" class="waiting-list">
+    <section id="projects">
       <div class="container">
-        <h2 class="section-heading"><span class="accent">02.</span> Projects Comming Soon...</h2>
+        <h2 class="section-heading"><span class="accent">02.</span> Work Samples</h2>
+      </div>
+      <div class="projects-section">
+        <code style="width: fit-content; margin: 0 auto; display: block">
+          Scroll right <i class="fas fa-long-arrow-alt-right"></i>
+        </code>
+        <div class="projects-grid">
+          <!-- Project Card 1 -->
+          <div class="project">
+            <h3>Natours</h3>
+            <p class="tech">Pug · Node.js · MongoDB · Stripe</p>
+            <p class="desc">
+              A full-stack tour booking platform featuring secure user authentication with
+              <strong>JWT and bcrypt,</strong> password reset via email, payment processing with
+              <strong>Stripe</strong>, file uploads with <strong>Multer</strong>, and data protection against
+              <strong>NoSQL injection and XSS</strong> attacks.
+            </p>
+            <div class="project-links">
+              <a class="disabled-link" href="#"> <i class="fa-solid fa-up-right-from-square"></i>(Coming Soon) </a>
+              <a href="https://github.com/yourname/natours" target="_blank">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+          <!-- Project Card 2 -->
+          <div class="project">
+            <h3>ClassLink</h3>
+            <p class="tech">React · Node.js · MongoDB</p>
+            <p class="desc">
+              An education platform bridging teachers, students, and learning resources with secure
+              <strong>JWT authentication</strong>, <strong>role-based access control</strong> (admin/teacher/student),
+              and dynamic <strong>React conditional rendering</strong>. Built with a Node.js backend and MongoDB for
+              scalable data management.
+            </p>
+            <div class="project-links">
+              <a class="disabled-link" href="#"> <i class="fa-solid fa-up-right-from-square"></i>(Coming Soon) </a>
+              <a href="https://github.com/yourname/classlink" target="_blank">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="project">
+            <h3>QuickMart</h3>
+            <p class="tech">React · Node.js · MongoDB</p>
+            <p class="desc">
+              An e-commerce platform built with <strong>React</strong>, <strong>Node.js</strong>, and
+              <strong>MongoDB</strong>. Features <strong>JWT authentication</strong> with
+              <strong>bcrypt</strong> password hashing, state management using <strong>Context API</strong>, and
+              <strong>file uploads</strong> handled with <strong>Multer</strong>.
+            </p>
+            <div class="project-links">
+              <a class="disabled-link" href="#"> <i class="fa-solid fa-up-right-from-square"></i>(Coming Soon) </a>
+              <a href="https://github.com/yourname/quickmart" target="_blank">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- Project Card 4 -->
+          <div class="project">
+            <h3>Family Todo List</h3>
+            <p class="tech">Node.js · EJS · PostgreSQL</p>
+            <p class="desc">
+              A shared family organizer with <strong>individual todo lists</strong> for each member on a single
+              platform. Features <strong>member management</strong> (add/remove members),
+              <strong>custom color themes</strong> per user, and secure authentication. Built with
+              <strong>Node.js</strong>, <strong>EJS templates</strong>, and <strong>PostgreSQL</strong> for data
+              storage.
+            </p>
+            <div class="project-links">
+              <a class="disabled-link" href="#"> <i class="fa-solid fa-up-right-from-square"></i>(Coming Soon) </a>
+              <a href="https://github.com/yourname/family-todo" target="_blank">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+          <!-- Project Card 5 -->
+          <div class="project">
+            <h3>Note Pad</h3>
+            <p class="tech">React · Material UI ·</p>
+            <p class="desc">
+              A <strong>Google Keep clone</strong> that helps you capture thoughts, organize notes, and track ideas.
+              Features include <strong>rich text notes</strong>, <strong>personal todo lists</strong> Built with
+              <strong>React</strong> and styled with <strong>Material UI</strong> for a polished user experience.
+            </p>
+            <div class="project-links">
+              <a class="disabled-link" href="#"> <i class="fa-solid fa-up-right-from-square"></i>(Coming Soon) </a>
+              <a href="https://github.com/yourname/note-pad" target="_blank">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="contact" class="contact">
       <div class="container">
-        <h2 class="section-heading"><span class="accent">04.</span> Get In Touch</h2>
+        <h2 class="section-heading"><span class="accent">03.</span> Get In Touch</h2>
         <p>
           I'm currently open to new opportunities and collaborations. Feel free to drop me a message, call, or WhatsApp
           me.
@@ -117,7 +211,13 @@
 
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2025 Bongomin Erick Juma.</p>
+        <p>
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Bongomin Erick Juma.
+        </p>
       </div>
     </footer>
 
