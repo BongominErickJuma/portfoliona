@@ -24,6 +24,7 @@ body {
   margin: 0;
   font-family: var(--font-primary);
   background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
+
   color: var(--color-text-primary);
   line-height: 1.6;
 }
@@ -86,6 +87,8 @@ body {
      HERO SECTION
      =============================== */
 .hero {
+  background-image: url("images/circle.png");
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -255,6 +258,9 @@ section {
 /* ===============================
      ABOUT SECTION
      =============================== */
+
+.about {
+}
 .about-content {
   display: flex;
   flex-wrap: wrap;
@@ -373,6 +379,13 @@ section {
 /* ===============================
      CONTACT FORM
      =============================== */
+
+.contact {
+  background-image: url("images/circle.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .contact-form {
   display: flex;
   flex-direction: column;
