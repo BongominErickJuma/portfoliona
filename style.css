@@ -94,6 +94,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   padding: 2rem 0;
+  border-radius: 0 0 10% 30%;
 }
 
 .hero-container {
@@ -159,6 +160,9 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .hero {
+    border-radius: 0;
+  }
   .hero-container {
     flex-direction: column;
     text-align: center;
@@ -259,8 +263,6 @@ section {
      ABOUT SECTION
      =============================== */
 
-.about {
-}
 .about-content {
   display: flex;
   flex-wrap: wrap;
