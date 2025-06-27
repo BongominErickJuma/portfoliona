@@ -152,9 +152,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 0;
+  padding: 2rem 0 2rem 2rem;
   border-radius: 0 0 0 50%;
-  border-bottom: 5px solid var(--color-accent);
+  border-bottom: 3px solid var(--color-accent);
 }
 
 .hero::before {
@@ -390,9 +390,9 @@ section {
      =============================== */
 .disabled-link {
   opacity: 0.7;
-  cursor: not-allowed;
   pointer-events: none;
   text-decoration: line-through;
+  cursor: none;
 }
 
 .projects-section {
