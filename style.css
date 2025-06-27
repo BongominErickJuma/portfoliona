@@ -141,7 +141,7 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 2rem 0 2rem 2rem;
-  border-radius: 0 0 0 50%;
+  border-radius: 0 0 0 30%;
   border-bottom: 3px solid var(--color-accent);
 }
 
