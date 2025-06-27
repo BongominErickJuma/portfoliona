@@ -26,18 +26,6 @@
 html {
   scroll-behavior: smooth;
 }
-
-/* Enhance button hover effect */
-.btn {
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(2, 132, 199, 0.2);
-}
-
 /* For WebKit browsers */
 ::-webkit-scrollbar {
   width: 8px;
@@ -296,8 +284,8 @@ body {
 }
 
 .btn {
-  display: inline-block;
-  margin-top: 30px;
+  display: block;
+  margin: 30px auto auto auto;
   padding: 12px 24px;
   background-color: var(--color-btn-bg);
   color: var(--color-btn-text);
@@ -308,10 +296,14 @@ body {
   cursor: pointer;
   transition: background-color 0.3s;
   text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn:hover {
   background-color: var(--color-accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(2, 132, 199, 0.2);
 }
 
 /* ===============================
