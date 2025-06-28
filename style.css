@@ -474,6 +474,33 @@ section {
   font-size: 0.95rem;
 }
 
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.complete {
+  background-color: #e6f7e6;
+  color: #2e7d32;
+  border: 1px solid #2e7d32;
+}
+
+.status-badge.in-progress {
+  background-color: #fff8e6;
+  color: #ff8f00;
+  border: 1px solid #ff8f00;
+}
+
+.disabled-link {
+  color: #999;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
 /* ===============================
      CONTACT FORM
      =============================== */
