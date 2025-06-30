@@ -3,6 +3,7 @@
    =============================== */
 
 :root {
+  --color-ecl: #e6f0fa;
   --color-bg-start: #f8fafc;
   --color-bg-end: #e2e8f0;
   --color-text-primary: #1e293b;
@@ -178,18 +179,13 @@ body {
 .hero-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 50%;
+  border-top: 1px groove var(--color-accent);
   max-height: 400px;
   object-fit: cover;
   aspect-ratio: 1 / 1;
-  box-shadow: 0 10px 30px -15px var(--color-accent);
   transition: transform 0.3s ease;
   display: block;
-}
-
-/* Hover effect */
-.hero-image img:hover {
-  transform: scale(1.05);
 }
 
 .greeting {
