@@ -19,6 +19,12 @@
   --section-rotate: 9vw;
 }
 
+@media (max-width: 768px) {
+  :root {
+    --section-rotate: 4vw;
+  }
+}
+
 /* ===============================
      GLOBAL STYLES
      =============================== */
@@ -552,6 +558,11 @@ section {
   font-size: 0.95rem;
 }
 
+@media (max-width: 768px) {
+  .projects-section {
+    width: calc(100% + 2rem);
+  }
+}
 /* ===============================
      CONTACT FORM
      =============================== */
