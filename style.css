@@ -687,10 +687,11 @@ section {
   .nav-links {
     position: absolute;
     top: 70px;
-    right: 20px;
+    right: 10px;
     background: var(--color-bg-start);
     flex-direction: column;
     align-items: flex-end;
+    justify-content: flex-start;
     padding: 20px;
     display: none;
   }
