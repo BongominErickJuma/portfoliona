@@ -207,11 +207,100 @@ function initLoader() {
   });
 }
 
+// Floating particles effect
+function createParticles() {
+  const particlesContainer = document.createElement('div');
+  particlesContainer.className = 'particles-container';
+  document.body.appendChild(particlesContainer);
+  
+  const particleCount = 50;
+  
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    
+    // Random starting position
+    particle.style.left = Math.random() * 100 + 'vw';
+    particle.style.animationDelay = Math.random() * 20 + 's';
+    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+    
+    particlesContainer.appendChild(particle);
+  }
+}
+
+// Staggered project card reveals
+function initProjectAnimations() {
+  const projects = document.querySelectorAll('.project');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0) rotateX(0)';
+        }, index * 200);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  projects.forEach(project => {
+    project.style.opacity = '0';
+    project.style.transform = 'translateY(50px) rotateX(-15deg)';
+    project.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    observer.observe(project);
+  });
+}
+
+// Enhanced cursor effect
+function initCursorEffect() {
+  const cursor = document.createElement('div');
+  cursor.className = 'custom-cursor';
+  document.body.appendChild(cursor);
+  
+  const cursorFollower = document.createElement('div');
+  cursorFollower.className = 'cursor-follower';
+  document.body.appendChild(cursorFollower);
+  
+  let mouseX = 0, mouseY = 0;
+  let followerX = 0, followerY = 0;
+  
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+  });
+  
+  // Smooth follower animation
+  function animateFollower() {
+    followerX += (mouseX - followerX) * 0.1;
+    followerY += (mouseY - followerY) * 0.1;
+    cursorFollower.style.transform = `translate(${followerX}px, ${followerY}px)`;
+    requestAnimationFrame(animateFollower);
+  }
+  animateFollower();
+  
+  // Cursor interactions
+  document.querySelectorAll('a, button, .project').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform += ' scale(1.5)';
+      cursorFollower.style.transform += ' scale(1.5)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = cursor.style.transform.replace(' scale(1.5)', '');
+      cursorFollower.style.transform = cursorFollower.style.transform.replace(' scale(1.5)', '');
+    });
+  });
+}
+
 // Initialize all effects
 document.addEventListener("DOMContentLoaded", () => {
   initLoader();
   initTypewriter();
   initScrollReveal();
+  initProjectAnimations();
+  createParticles();
+  initCursorEffect();
   
   // Add smooth scroll to all anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -235,9 +324,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Add fadeInUp animation
-const fadeInUpStyle = document.createElement('style');
-fadeInUpStyle.textContent = `
+// Add additional animations and effects
+const additionalStyles = document.createElement('style');
+additionalStyles.textContent = `
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -248,5 +337,101 @@ fadeInUpStyle.textContent = `
       transform: translateY(0);
     }
   }
+  
+  /* Floating particles */
+  .particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: radial-gradient(circle, #3b82f6, transparent);
+    border-radius: 50%;
+    animation: float linear infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-10vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  /* Custom cursor */
+  .custom-cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: #3b82f6;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+  }
+  
+  .cursor-follower {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .custom-cursor,
+    .cursor-follower {
+      display: none;
+    }
+    .particles-container {
+      display: none;
+    }
+  }
+  
+  /* Project card entrance animations */
+  .project {
+    transform-origin: center center;
+  }
+  
+  /* Enhanced scrollbar for project container */
+  .projects-grid::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .projects-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  
+  .projects-grid::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 4px;
+  }
+  
+  .projects-grid::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  }
 `;
-document.head.appendChild(fadeInUpStyle);
+document.head.appendChild(additionalStyles);
