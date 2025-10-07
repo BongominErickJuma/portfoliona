@@ -25,9 +25,9 @@ navItems.forEach((link) => {
 let lastScroll = 0;
 window.addEventListener("scroll", () => {
   const currentScroll = window.scrollY;
-  
+
   navbar.classList.toggle("scrolled", currentScroll > 50);
-  
+
   // Hide/show navbar on scroll
   if (currentScroll > lastScroll && currentScroll > 100) {
     navbar.style.transform = "translateY(-100%)";
@@ -40,19 +40,18 @@ window.addEventListener("scroll", () => {
 // Enhanced Typewriter Effect
 function initTypewriter() {
   const texts = [
-    "I craft modern, responsive web apps.",
     "Full-stack developer & designer.",
-    "Building digital experiences.",
-    "React, Node.js, and beyond."
+    "React, Node.js, Django and beyond.",
+    "I craft modern, responsive web apps.",
   ];
   let textIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
   const speed = isDeleting ? 50 : 100;
-  
+
   function type() {
     const currentText = texts[textIndex];
-    
+
     if (isDeleting) {
       textElement.textContent = currentText.substring(0, charIndex - 1);
       charIndex--;
@@ -60,7 +59,7 @@ function initTypewriter() {
       textElement.textContent = currentText.substring(0, charIndex + 1);
       charIndex++;
     }
-    
+
     if (!isDeleting && charIndex === currentText.length) {
       setTimeout(() => {
         isDeleting = true;
@@ -73,10 +72,10 @@ function initTypewriter() {
       setTimeout(type, 500);
       return;
     }
-    
+
     setTimeout(type, isDeleting ? 50 : 100);
   }
-  
+
   // Start typing after a short delay
   setTimeout(() => {
     cursor.style.display = "inline-block";
@@ -86,32 +85,34 @@ function initTypewriter() {
 
 // Scroll Reveal Animation
 function initScrollReveal() {
-  const reveals = document.querySelectorAll('.section-heading, .about-content, .project, .contact-content, .alt-contact');
-  
+  const reveals = document.querySelectorAll(
+    ".section-heading, .about-content, .project, .contact-content, .alt-contact"
+  );
+
   const revealElement = (entries, observer) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
+        entry.target.classList.add("revealed");
         observer.unobserve(entry.target);
       }
     });
   };
-  
+
   const observer = new IntersectionObserver(revealElement, {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: "0px 0px -50px 0px",
   });
-  
-  reveals.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+
+  reveals.forEach((el) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(30px)";
+    el.style.transition = "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
     observer.observe(el);
   });
 }
 
 // Add revealed class styles
-const style = document.createElement('style');
+const style = document.createElement("style");
 style.textContent = `
   .revealed {
     opacity: 1 !important;
@@ -169,39 +170,39 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Parallax effect for hero section
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   const scrolled = window.scrollY;
-  const heroImage = document.querySelector('.hero-image img');
+  const heroImage = document.querySelector(".hero-image img");
   if (heroImage && scrolled < 600) {
     heroImage.style.transform = `translateY(${scrolled * 0.3}px) scale(${1 + scrolled * 0.0002})`;
   }
 });
 
 // Add magnetic effect to buttons
-document.querySelectorAll('.btn, .alt-contact a').forEach(button => {
-  button.addEventListener('mousemove', (e) => {
+document.querySelectorAll(".btn, .alt-contact a").forEach((button) => {
+  button.addEventListener("mousemove", (e) => {
     const rect = button.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    
+
     button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
   });
-  
-  button.addEventListener('mouseleave', () => {
-    button.style.transform = '';
+
+  button.addEventListener("mouseleave", () => {
+    button.style.transform = "";
   });
 });
 
 // Loading animation
 function initLoader() {
-  const loader = document.createElement('div');
-  loader.className = 'loading';
+  const loader = document.createElement("div");
+  loader.className = "loading";
   loader.innerHTML = '<div class="loading-spinner"></div>';
   document.body.appendChild(loader);
-  
-  window.addEventListener('load', () => {
+
+  window.addEventListener("load", () => {
     setTimeout(() => {
-      loader.classList.add('hidden');
+      loader.classList.add("hidden");
       setTimeout(() => loader.remove(), 500);
     }, 500);
   });
@@ -209,68 +210,73 @@ function initLoader() {
 
 // Floating particles effect
 function createParticles() {
-  const particlesContainer = document.createElement('div');
-  particlesContainer.className = 'particles-container';
+  const particlesContainer = document.createElement("div");
+  particlesContainer.className = "particles-container";
   document.body.appendChild(particlesContainer);
-  
+
   const particleCount = 50;
-  
+
   for (let i = 0; i < particleCount; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
+    const particle = document.createElement("div");
+    particle.className = "particle";
+
     // Random starting position
-    particle.style.left = Math.random() * 100 + 'vw';
-    particle.style.animationDelay = Math.random() * 20 + 's';
-    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-    
+    particle.style.left = Math.random() * 100 + "vw";
+    particle.style.animationDelay = Math.random() * 20 + "s";
+    particle.style.animationDuration = Math.random() * 10 + 10 + "s";
+
     particlesContainer.appendChild(particle);
   }
 }
 
 // Staggered project card reveals
 function initProjectAnimations() {
-  const projects = document.querySelectorAll('.project');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0) rotateX(0)';
-        }, index * 200);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  projects.forEach(project => {
-    project.style.opacity = '0';
-    project.style.transform = 'translateY(50px) rotateX(-15deg)';
-    project.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+  const projects = document.querySelectorAll(".project");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0) rotateX(0)";
+          }, index * 200);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  projects.forEach((project) => {
+    project.style.opacity = "0";
+    project.style.transform = "translateY(50px) rotateX(-15deg)";
+    project.style.transition = "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
     observer.observe(project);
   });
 }
 
 // Enhanced cursor effect
 function initCursorEffect() {
-  const cursor = document.createElement('div');
-  cursor.className = 'custom-cursor';
+  const cursor = document.createElement("div");
+  cursor.className = "custom-cursor";
   document.body.appendChild(cursor);
-  
-  const cursorFollower = document.createElement('div');
-  cursorFollower.className = 'cursor-follower';
+
+  const cursorFollower = document.createElement("div");
+  cursorFollower.className = "cursor-follower";
   document.body.appendChild(cursorFollower);
-  
-  let mouseX = 0, mouseY = 0;
-  let followerX = 0, followerY = 0;
-  
-  document.addEventListener('mousemove', (e) => {
+
+  let mouseX = 0,
+    mouseY = 0;
+  let followerX = 0,
+    followerY = 0;
+
+  document.addEventListener("mousemove", (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
     cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
   });
-  
+
   // Smooth follower animation
   function animateFollower() {
     followerX += (mouseX - followerX) * 0.1;
@@ -279,16 +285,16 @@ function initCursorEffect() {
     requestAnimationFrame(animateFollower);
   }
   animateFollower();
-  
+
   // Cursor interactions
-  document.querySelectorAll('a, button, .project').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.transform += ' scale(1.5)';
-      cursorFollower.style.transform += ' scale(1.5)';
+  document.querySelectorAll("a, button, .project").forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      cursor.style.transform += " scale(1.5)";
+      cursorFollower.style.transform += " scale(1.5)";
     });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.transform = cursor.style.transform.replace(' scale(1.5)', '');
-      cursorFollower.style.transform = cursorFollower.style.transform.replace(' scale(1.5)', '');
+    el.addEventListener("mouseleave", () => {
+      cursor.style.transform = cursor.style.transform.replace(" scale(1.5)", "");
+      cursorFollower.style.transform = cursorFollower.style.transform.replace(" scale(1.5)", "");
     });
   });
 }
@@ -301,31 +307,31 @@ document.addEventListener("DOMContentLoaded", () => {
   initProjectAnimations();
   createParticles();
   initCursorEffect();
-  
+
   // Add smooth scroll to all anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+      const target = document.querySelector(this.getAttribute("href"));
       if (target) {
         target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+          behavior: "smooth",
+          block: "start",
         });
       }
     });
   });
-  
+
   // Add animation to tech list items
-  const techItems = document.querySelectorAll('.tech-list li');
+  const techItems = document.querySelectorAll(".tech-list li");
   techItems.forEach((item, index) => {
     item.style.animationDelay = `${index * 0.1}s`;
-    item.style.animation = 'fadeInUp 0.5s ease forwards';
+    item.style.animation = "fadeInUp 0.5s ease forwards";
   });
 });
 
 // Add additional animations and effects
-const additionalStyles = document.createElement('style');
+const additionalStyles = document.createElement("style");
 additionalStyles.textContent = `
   @keyframes fadeInUp {
     from {
