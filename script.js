@@ -41,8 +41,8 @@ window.addEventListener("scroll", () => {
 function initTypewriter() {
   const texts = [
     "Full-stack developer & designer.",
-    "React, Node.js, Django and beyond.",
-    "I craft modern, responsive web apps.",
+    "React, Node.js, Django & beyond.",
+    "Modern, responsive web apps.",
   ];
   let textIndex = 0;
   let charIndex = 0;
